@@ -12,7 +12,7 @@ function App() {
         <div className="container">
           <div className="content__top">
             <div className="categories">
-              <Button>What's up?</Button>
+              <Button outline={true}>What's up?</Button>
               <ul>
                 <li className="active">Все</li>
                 <li>Мясные</li>

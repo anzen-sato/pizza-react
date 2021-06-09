@@ -1,6 +1,9 @@
+import classNames from 'classnames';
 const Button = (props) => {
     return(
-        <div>{props.children}</div>
+        <button className={classNames('button', {
+            'button--outline': props.outline,
+        })}>{props.children}</button>
     )
 }
 
