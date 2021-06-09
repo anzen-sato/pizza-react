@@ -1,17 +1,21 @@
 import './scss/app.scss';
-import {Header, Button, Categories} from './components';
+import {Header, Categories} from './components';
 import logo from "./img/pizza-logo.svg";
 
 function App() {
   return (
-    <div className="App">
-  <body>
     <div className="wrapper">
     <Header logo={logo}/>
       <div className="content">
         <div className="container">
           <div className="content__top">
-            <Categories/>
+            <Categories items={[
+                "Мясные",
+                "Вегетареанская",
+                "Гриль",
+                "Острые",
+                "Закрытые",
+            ]}/>
             <div className="sort">
               <div className="sort__label">
                 <svg
@@ -378,10 +382,10 @@ function App() {
         </div>
       </div>
     </div>
-  </body>
 
 
-    </div>
+
+
   );
 }
 

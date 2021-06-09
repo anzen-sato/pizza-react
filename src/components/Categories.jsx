@@ -1,15 +1,16 @@
-import {Button} from "./index";
-
-const Categories = () => {
+import {useState} from "react";
+const Categories = (props) => {
+    const selectItem = (item) => {
+        setSelectedItem(item);
+    }
+    const [selectedItem, setSelectedItem] = useState(null);
     return <div className="categories">
-              <Button outline={true}>What's up?</Button>
               <ul>
-                <li className="active">Все</li>
-                <li>Мясные</li>
-                <li>Вегетарианская</li>
-                <li>Гриль</li>
-                <li>Острые</li>
-                <li>Закрытые</li>
+                <li className={selectedItem === null ? "active" : ""}>Все</li>
+                  {
+                      props.items && props.items.map((item, index) =>
+                          <li className={selectedItem === item ? "active" : ""} onClick={()=>selectItem(item)} key={`${item}_${index}`}>{item}</li>)
+                  }
               </ul>
             </div>
 }
