@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SortPopup = (props) => {
   const selectSort = (index) => {
@@ -9,8 +9,10 @@ const SortPopup = (props) => {
   const clickVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
   };
+
   const [selectedSort, setSelectedSort] = useState(0);
   const [visiblePopup, setVisiblePopup] = useState(false);
+  useEffect(() => console.log("visible Popup!"), [visiblePopup]);
   return (
     <div className="sort">
       <div className="sort__label">
