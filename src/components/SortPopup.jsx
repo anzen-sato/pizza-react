@@ -4,7 +4,7 @@ const SortPopup = (props) => {
   const selectSort = (index) => {
     setSelectedSort(index);
     setVisiblePopup(false);
-    console.log(sortRef);
+    console.log(`visiblePopup is: ${sortRef}`);
   };
   const clickVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
