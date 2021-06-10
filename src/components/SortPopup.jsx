@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SortPopup = (props) => {
   const selectSort = (index) => {
     setSelectedSort(index);
-    console.log(index);
     setVisiblePopup(false);
+    console.log(sortRef);
   };
   const clickVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
   };
 
+  const sortRef = useRef();
   const [selectedSort, setSelectedSort] = useState(0);
   const [visiblePopup, setVisiblePopup] = useState(false);
   useEffect(() => console.log("visible Popup!"), [visiblePopup]);
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
