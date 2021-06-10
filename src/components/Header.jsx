@@ -1,4 +1,4 @@
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   return (
@@ -7,6 +7,7 @@ const Header = (props) => {
         <Link to={"/"}>
           <div className="header__logo">
             <img width="38" src={props.logo} alt="Pizza logo" />
+
             <div>
               <h1>React Pizza</h1>
               <p>Самая вкусная пицца во вселенной!</p>
