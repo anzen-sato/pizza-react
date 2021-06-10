@@ -1,6 +1,7 @@
 import { Categories, PizzaBlock, SortPopup } from "../components";
 
 const Home = (props) => {
+  console.log(props);
   return (
     <div className="content">
       <div className="container">
@@ -12,10 +13,9 @@ const Home = (props) => {
         </div>
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
-          {props.items.isArray() &&
-            props.items.map((item, index) => (
-              <PizzaBlock key={`${item}_${index}`} item={item} />
-            ))}
+          {props.items.map((item) => (
+            <PizzaBlock key={item.id} {...item} />
+          ))}
         </div>
       </div>
     </div>
