@@ -2,7 +2,6 @@ import { useState } from "react";
 const Categories = (props) => {
   const selectItem = (index) => {
     setSelectedItem(index);
-    console.log(index);
   };
   const [selectedItem, setSelectedItem] = useState(null);
   return (

@@ -4,20 +4,28 @@ const SortPopup = (props) => {
   const selectSort = (index) => {
     setSelectedSort(index);
     setVisiblePopup(false);
-    console.log(`visiblePopup is: ${sortRef}`);
   };
   const clickVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
   };
 
+  const handleOutsideClick = (e) => {
+    if (!e.path.includes(sortRef.current)) {
+      setVisiblePopup(false);
+    }
+  };
+
   const sortRef = useRef();
   const [selectedSort, setSelectedSort] = useState(0);
   const [visiblePopup, setVisiblePopup] = useState(false);
-  useEffect(() => console.log("visible Popup!"), [visiblePopup]);
+  useEffect(() => {
+    document.body.addEventListener("click", handleOutsideClick);
+  }, []);
   return (
     <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
+          className={visiblePopup ? "rotated" : ""}
           width="10"
           height="6"
           viewBox="0 0 10 6"
