@@ -1,11 +1,12 @@
 import { useState } from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
-const PizzaBlock = (props) => {
-  const [activeType, setActiveType] = useState(props.types[0]);
-  const [activeSize, setActiveSize] = useState(props.sizes[0]);
-  const types = ["тонкое", "традиционное"];
-  const sizes = [26, 30, 40];
+const PizzaBlock = ({ name, price, sizes, types, imageUrl }) => {
+  const [activeType, setActiveType] = useState(types[0]);
+  const [activeSize, setActiveSize] = useState(sizes[0]);
+  const typeNames = ["тонкое", "традиционное"];
+  const sizeTypes = [26, 30, 40];
   const selectActiveType = (index) => {
     setActiveType(index);
   };
@@ -14,16 +15,16 @@ const PizzaBlock = (props) => {
   };
   return (
     <div className="pizza-block">
-      <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{props.name}</h4>
+      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+      <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {types.map((type, index) => (
+          {typeNames.map((type, index) => (
             <li
               onClick={() => selectActiveType(index)}
               className={classNames({
-                disable: !props.types.includes(index),
-                active: props.types.includes(index) && index === activeType,
+                disable: !types.includes(index),
+                active: types.includes(index) && index === activeType,
               })}
               key={`${index}_${type}`}
             >
@@ -32,22 +33,22 @@ const PizzaBlock = (props) => {
           ))}
         </ul>
         <ul>
-          {sizes.map((item, index) => (
+          {sizeTypes.map((item, index) => (
             <li
               onClick={() => selectActiveSize(item)}
               className={classNames({
-                disable: !props.sizes.includes(item),
-                active: sizes[index] === activeSize,
+                disable: !sizes.includes(item),
+                active: sizeTypes[index] === activeSize,
               })}
               key={`${item}_${index}`}
             >
-              {item}
+              {item}см
             </li>
           ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {props.price}₽</div>
+        <div className="pizza-block__price">от {price}₽</div>
         <div className="button button--outline button--add">
           <svg
             width="12"
@@ -67,6 +68,21 @@ const PizzaBlock = (props) => {
       </div>
     </div>
   );
+};
+
+PizzaBlock.protoTypes = {
+  name: PropTypes.string,
+  cost: PropTypes.number,
+  imageUrl: PropTypes.string,
+  sizes: PropTypes.arrayOf(PropTypes.number),
+  types: PropTypes.arrayOf(PropTypes.number),
+};
+
+PizzaBlock.defaultProps = {
+  name: "---",
+  const: 666,
+  sizes: [],
+  types: [],
 };
 
 export default PizzaBlock;
