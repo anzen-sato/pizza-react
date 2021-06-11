@@ -2,9 +2,10 @@ import { useState } from "react";
 import classNames from "classnames";
 
 const PizzaBlock = (props) => {
-  const [activeType, setActiveType] = useState(0);
-  const [activeSize, setActiveSize] = useState(0);
+  const [activeType, setActiveType] = useState(props.types[0]);
+  const [activeSize, setActiveSize] = useState(props.sizes[0]);
   const types = ["тонкое", "традиционное"];
+  const sizes = [26, 30, 40];
   const selectActiveType = (index) => {
     setActiveType(index);
   };
@@ -20,7 +21,10 @@ const PizzaBlock = (props) => {
           {types.map((type, index) => (
             <li
               onClick={() => selectActiveType(index)}
-              className={classNames()}
+              className={classNames({
+                disable: !props.types.includes(index),
+                active: props.types.includes(index) && index === activeType,
+              })}
               key={`${index}_${type}`}
             >
               {type}
@@ -28,10 +32,13 @@ const PizzaBlock = (props) => {
           ))}
         </ul>
         <ul>
-          {props.sizes.map((item, index) => (
+          {sizes.map((item, index) => (
             <li
-              onClick={() => selectActiveSize(index)}
-              className={index === activeSize ? "active" : ""}
+              onClick={() => selectActiveSize(item)}
+              className={classNames({
+                disable: !props.sizes.includes(item),
+                active: sizes[index] === activeSize,
+              })}
               key={`${item}_${index}`}
             >
               {item}
