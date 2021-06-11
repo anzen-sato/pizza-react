@@ -10,7 +10,7 @@ const PizzaBlock = (props) => {
     setActiveType(index);
   };
   const selectActiveSize = (index) => {
-    setActiveSize(index)
+    setActiveSize(index);
   };
   return (
     <div className="pizza-block">
