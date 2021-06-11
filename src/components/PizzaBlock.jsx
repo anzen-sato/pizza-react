@@ -80,7 +80,7 @@ PizzaBlock.protoTypes = {
 
 PizzaBlock.defaultProps = {
   name: "---",
-  const: 666,
+  price: 666,
   sizes: [],
   types: [],
 };

@@ -13,7 +13,7 @@ const Home = (props) => {
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
           {props.items.map((item) => (
-            <PizzaBlock key={item.id} />
+            <PizzaBlock key={item.id} {...item} />
           ))}
         </div>
       </div>
