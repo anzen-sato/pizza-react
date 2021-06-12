@@ -5,7 +5,6 @@ import { Cart, Home } from "./pages";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { createStore } from "redux";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
